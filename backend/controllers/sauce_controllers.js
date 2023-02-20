@@ -18,6 +18,7 @@ exports.createSauce = (req, res, next) => {
     delete sauceObject._id;
     const sauce = new sauceModels({
         ...sauceObject,
+        userId: req.auth.userId,
         imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
         likes: 0,
         dislikes:0,
